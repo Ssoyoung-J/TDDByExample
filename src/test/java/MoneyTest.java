@@ -6,8 +6,10 @@ public class MoneyTest {
     @Test
     public void testMultiplication() {
         Dollar five = new Dollar(5);
-        five.times(2);
-        assertEquals(10, five.amount);
+        Dollar product = five.times(2);
+        assertEquals(10, product.amount);
+        product = five.times(3);
+        assertEquals(15, product.amount);
     }
 
     class Dollar {
@@ -20,9 +22,11 @@ public class MoneyTest {
         Dollar(int amount) {
             this.amount = amount;
         }
-
-        void times(int multiplier) {
-            amount *= multiplier;
+        /*
+        * 올바른 금액을 갖는 new Dollar return
+        * */
+        Dollar times(int multiplier) {
+            return new Dollar(amount * multiplier);
         }
 
     }
